@@ -8,10 +8,25 @@ from django.contrib.auth.decorators import login_required
 
 
 
+def landing_page(request):
+    return render(request, 'landing_page.html')
+
 @login_required
 def dashboard(request):
     user = request.user
-    return render(request, 'dashboard.html')
+    name = request.user.first_name
+    if user.is_subscribed:
+        resources = Resource.objects.all()
+    else:
+        resources = Resource.objects.filter(is_free=True)
+
+    context = {
+        'name': name,
+        'resources': resources,
+    }
+
+    return render(request, 'dashboard.html', context)
+
 
 
 def upload_form(request):
@@ -27,6 +42,7 @@ def upload_form(request):
         return render(request, 'forms/forms_upload.html', {'form': form})
     else:
         return HttpResponse("You cannot perform this action!")
+
 
 
 

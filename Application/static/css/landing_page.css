@@ -1,0 +1,99 @@
+@media (min-width: 100px) and (max-width: 900px) {
+    body {
+        height: 100vh;
+        background-image: url('/static/img/phone3...jpg');
+        background-size: cover;
+        background-attachment: fixed;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    .container {
+        background-color: white;
+        border: 1px solid rgb(84, 83, 81);
+        border-bottom: 0;
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding-bottom: 20px;
+    }
+
+    .text {
+        padding: 30px;
+    }
+
+    .text h1 {
+        color: rgb(13, 13, 14);
+        font-family: Croissant One;
+        font-weight: 900;
+    }
+
+    .text p {
+        color: rgb(95, 93, 93);
+        font-family: Dela Gothic One;
+        font-size: 17px;
+        font-weight: bold;
+        padding-bottom: 2px;
+    }
+
+    button {
+        background-color: rgb(12, 12, 12);
+        text-decoration: none;
+        color: azure;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-weight: bold;
+        font-size: medium;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        /* margin-top: 10px; */
+        margin: auto;
+        padding: 13px 100px;
+        border: none;
+        border-radius: 25px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    button:hover {
+        background-color: rgb(85, 83, 84);
+    }
+
+    button i {
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+
+    /* Floating Rectangular Piece Styles */
+    .floating-piece {
+        position: absolute;
+        top: 100px;
+        right: 30px;
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 7px;
+        border-radius: 10px;
+    }
+
+    .floating-piece:hover {
+        text-decoration: none;
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .floating-piece a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+    }
+
+    .floating-piece a:hover {
+        text-decoration: none;
+    }
+
+}
+

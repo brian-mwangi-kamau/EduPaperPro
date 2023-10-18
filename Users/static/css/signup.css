@@ -1,0 +1,83 @@
+@media (min-width: 330px) and (max-width: 430px) {
+    body, html {
+        background-color: #e1d9d9; 
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Style for the form container */
+    .form-container {
+        background-color: #e1d9d9; 
+        padding: 10px;
+        /* border: 1px solid grey;
+        border-radius: 10px;  */
+        margin: 5px;
+    }
+
+    .header h1 {
+        text-align: center;
+    }
+
+    .header p {
+        text-align: center;
+    }
+
+    .form {
+        border: 1px solid gray;
+        border-radius: 20px;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .form-field {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    label {
+        margin: 5px;
+    }
+
+    .field {
+        border: 1px solid rgb(53, 50, 50);
+        border-radius: 5px;
+        margin: 5px;
+    }
+
+
+    button {
+        background-color: rgb(12, 12, 12);
+        text-decoration: none;
+        color: azure;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-weight: bold;
+        font-size: medium;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        margin-top: 30px !important;
+        margin: auto;
+        padding: 13px 100px;
+        border: none;
+        border-radius: 25px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    button:hover {
+        background-color: rgb(85, 83, 84);
+    }
+
+    button i {
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+
+    .already-registered {
+        text-align: center;
+    }
+
+}

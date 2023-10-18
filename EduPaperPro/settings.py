@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'Users',
     'Transactions',
     'Application',
+    #'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -130,7 +131,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-# CRISPY_TEMPLATE_PACK = ''
+# CRISPY_TEMPLATE_PACK = 'bootstrap'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -146,3 +147,12 @@ AUTH_USER_MODEL = 'Users.CustomUser'
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = 'login'
+
+
+EMAIL_BACKEND = os.environ['EMAIL_BACKEND']
+EMAIL_HOST = os.environ['EMAIL_HOST']
+EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
+EMAIL_PORT = os.environ['EMAIL_PORT'] 
+EMAIL_USE_TLS = os.environ['EMAIL_USE_TLS'] 
+EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = os.environ["EMAIL_HOST_PASSWORD"]

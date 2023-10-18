@@ -2,6 +2,10 @@
 <html>
     <head></head>
     <body>
-        <h1>You are on the dashboard {{ user.phone_number }}</h1>
+        <h1>You are on the dashboard, {{ user.first_name }}</h1>
+        {% for resource in resources %}
+        <p>Name: {{ resource.title }}</p>
+        <p>Desc: {{ resource.description }}</p>
+        {% endfor %}
     </body>
 </html>

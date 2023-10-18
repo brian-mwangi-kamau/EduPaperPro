@@ -42,7 +42,10 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    phone_number = models.CharField(max_length=8, unique=True, null=True)
+    account_number = models.CharField(max_length=8, unique=True)
+    is_subscribed = models.BooleanField(default=False)
+    otp_number = models.CharField(max_length=6, null=True, blank=True)
+
 
     is_admin = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -73,7 +76,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 class UserAccount(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     cash_balance = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
-    is_subscribed = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.user.first_name} ({self.user.phone_number})"
