@@ -44,7 +44,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=50)
     account_number = models.CharField(max_length=8, unique=True)
     is_subscribed = models.BooleanField(default=False)
-    otp_number = models.CharField(max_length=6, null=True, blank=True)
 
 
     is_admin = models.BooleanField(default=False)

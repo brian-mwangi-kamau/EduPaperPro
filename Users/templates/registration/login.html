@@ -14,14 +14,7 @@
         <div class="form">
             <form method="post">
                 {% csrf_token %}
-                <div class="form-field">
-                    <label for="{{ form.email.id_for_label }}">Email:</label>
-                    <div class="field">{{ form.email }}</div> 
-                </div>
-                <div class="form-field">
-                    <label for="{{ form.password.id_for_label }}">Password:</label>
-                    <div class="field">{{ form.password }}</div>
-                </div>
+                {{ form.as_p }}
                 <button type="submit">Login</button>
             </form>
         </div>

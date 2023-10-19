@@ -10,10 +10,10 @@ def generate_otp(length=6):
     return otp
 
 
-def send_otp_to_email(email, otp):
-    subject = 'Your OTP for Login'
-    message = f'Your OTP is: {otp}'
-    from_email = settings.EMAIL_HOST_USER
-    recipient_list = [email]
-    send_mail(subject, message, from_email, recipient_list)
+# def send_otp_to_email(email, otp):
+#     subject = 'Your OTP for Login'
+#     message = f'Your OTP is: {otp}'
+#     from_email = settings.EMAIL_HOST_USER
+#     recipient_list = [email]
+#     send_mail(subject, message, from_email, recipient_list)
 

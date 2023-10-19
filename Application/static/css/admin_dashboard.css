@@ -1,0 +1,119 @@
+@media (min-width: 100px) and (max-width: 900px) {
+    body, html {
+        margin: 0;
+        padding: 0;
+        background-color: #e1d9d9;
+    }
+
+    /* Style for the dashboard container */
+    header {
+        background-color: #e1d9d9;
+        padding: 20px;
+    }
+
+    /* Style for the top bar with menu and notifications icons */
+    .top-bar {
+        height: 26px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        background-color: #e5e0e0;
+        padding: 10px 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+
+    .upload-link {
+        align-items: center;
+        
+    }
+
+    .upload-link a {
+        color: aliceblue;
+        font-weight: bold;
+        background-color: black;
+        border: none;
+        border-radius: 20px;
+        padding: 10px;
+        text-decoration: none;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .container .greetings {
+        position: relative;
+        font-size: large;
+        font-weight: bold;
+        text-align: center;
+        align-items: center;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    /* .view-link button {
+        background-color: rgb(12, 12, 12);
+        text-decoration: none;
+        color: azure;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-weight: bold;
+        font-size: medium;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        margin-top: 20px;
+        padding: 13px 100px;
+        border: none;
+        border-radius: 25px;
+    }
+
+    .view-link a {
+        text-decoration: none;
+    }
+
+    .view-link button button:hover {
+        background-color: rgb(85, 83, 84);
+    }
+
+    .view-link button button i {
+        padding-top: 4px;
+        padding-bottom: 4px;
+    } */
+
+    .user-chart {
+        border: 1px solid #c1bcbc;
+        background-color: aliceblue;
+        border-top-right-radius: 20px;
+        border-top-left-radius: 20px;
+        padding: 20px;
+        position: relative;
+        /* width: 200px; */
+        height: 200px; 
+
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .user-chart canvas {
+        position: absolute;
+    }
+
+    .number_of_users p {
+        margin-top: 0px;
+        border: 1px solid #c1bcbc;
+        background-color: aliceblue;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        padding: 10px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+}

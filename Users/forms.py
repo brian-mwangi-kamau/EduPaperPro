@@ -6,7 +6,8 @@ class SignupForm(forms.Form):
     email = forms.EmailField()
     first_name = forms.CharField(max_length=50)
     last_name = forms.CharField(max_length=50)
-    password = forms.CharField(widget=forms.PasswordInput())
+    password1 = forms.CharField(widget=forms.PasswordInput())
+    password2 = forms.CharField(widget=forms.PasswordInput())
 
     class Meta:
         model = CustomUser
@@ -15,6 +16,7 @@ class SignupForm(forms.Form):
             'first_name',
             'last_name',
             'password1',
+            'password2',
         )
 
 

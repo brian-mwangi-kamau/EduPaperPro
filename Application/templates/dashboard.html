@@ -7,5 +7,39 @@
         <p>Name: {{ resource.title }}</p>
         <p>Desc: {{ resource.description }}</p>
         {% endfor %}
+
+        <ul>
+            {% for resource in resources %}
+                <li>
+                    <strong>{{ resource.title }}</strong>
+                    <p>{{ resource.description }}</p>
+                    <a target="_blank" href="{% url 'download_forms' resource.id %}" class="download-link">Download</a>
+                </li>
+            {% endfor %}
+        </ul>
+    
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('.download-link').on('click', function(event) {
+                    event.preventDefault();
+                    var downloadUrl = $(this).attr('href');
+                    var formId = $(this).data('form-id');
+                    
+                    $.ajax({
+                        url: '{% url "record_download" %}',
+                        method: 'POST',
+                        data: { form_id: formId },
+                        headers: { 'X-CSRFToken': '{{ csrf_token }}' },
+                        success: function(data) {
+                            window.location.href = downloadUrl;
+                        },
+                        error: function() {
+                        }
+                    });
+                });
+            });
+        </script>
+
     </body>
 </html>

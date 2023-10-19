@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Admin console</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/admin_dashboard.css' %}">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="/static/js/circle-chart.js"></script>
+        <script src="/static/js/chart.js"></script>
+    </head>
+    <body>
+        {% block content %}
+        <header>
+            <!-- The navbar -->
+            <div class="top-bar">
+                <div class="upload-link">
+                    <a href="{% url 'form_upload' %}">Upload</a>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <div class="greetings" id="greeting"></div>
+
+            <div class="platform-metrics">
+                <!-- Number of users (admins and regular users) -->
+                <div class="users">
+                    <div class="user-chart">
+                        <canvas id="userCircleChart" width="200" height="200"></canvas>
+                    </div>
+    
+                    <div class="number_of_users">
+                        <p>{{ users }} platform users</p>
+                    </div>
+                </div>
+
+                <!-- Number of downloads -->
+                <div class="data-chart">
+                    <canvas id="weeklyChart" width="400" height="200"></canvas>
+                    <canvas id="monthlyChart" width="400" height="200"></canvas>
+                    <p>{{ user_downloads }} downloads</p>
+                </div>
+
+                <!-- Number of subscribed users
+                Number of resources on the platform -->
+
+            </div>
+
+            <div class="user-metrics">
+                <!-- Number of active users
+                users by level of education
+                User engagement statistics -->
+            </div>
+
+            <div class="resource-metrics">
+                <!-- Resource popularity
+                Resource categorization
+                Resource upload history -->
+            </div>
+
+        </div>
+        {% endblock %}
+    </body>
+
+    <!-- js code -->
+    <script>
+        var currentTime = new Date().getHours();
+        var greeting = document.getElementById('greeting');
+
+        if (currentTime >= 5 && currentTime < 12) {
+            greeting.textContent = "Good morning, {{ user.first_name }}!";
+        } else if (currentTime >= 12 && currentTime < 18) {
+            greeting.textContent = "Good afternoon, {{ user.first_name }}!";
+        } else {
+            greeting.textContent = "Good evening, {{ user.first_name }}!";
+        }
+    </script>
+    
+</html>

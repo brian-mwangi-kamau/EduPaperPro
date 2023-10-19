@@ -10,6 +10,7 @@ from django.dispatch import receiver
 
 
 
+
 def generate_unique_account_number():
     while True:
         account_number = ''.join(random.choice('0123456789') for _ in range(8))
@@ -34,7 +35,7 @@ def signup_view(request):
                 first_name=form.cleaned_data['first_name'],
                 last_name=form.cleaned_data['last_name'],
             )
-            user.set_password(form.cleaned_data['password'])
+            user.set_password(form.cleaned_data['password1'])
             user.account_number = generate_unique_account_number()
             user.save()
 
@@ -43,6 +44,8 @@ def signup_view(request):
     else:
         form = SignupForm()
     return render(request, 'registration/signup.html', {'form': form})
+
+
 
 
 def login_view(request):
