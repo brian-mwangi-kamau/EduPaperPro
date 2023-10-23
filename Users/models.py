@@ -44,7 +44,12 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=50)
     account_number = models.CharField(max_length=8, unique=True)
     is_subscribed = models.BooleanField(default=False)
-
+    LEVEL_OF_EDUCATION = [
+        ('Primary school', 'Primary School'),
+        ('Secondary School', 'Secondary School'),
+        ('Tertiary Level', 'Tertiary Level'),
+    ]
+    level_of_education = models.CharField(max_length=100, null=True, blank=True, choices=LEVEL_OF_EDUCATION)
 
     is_admin = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -77,4 +82,4 @@ class UserAccount(models.Model):
     cash_balance = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
 
     def __str__(self):
-        return f"{self.user.first_name} ({self.user.phone_number})"
+        return f"{self.user.first_name} ({self.user.account_number})"

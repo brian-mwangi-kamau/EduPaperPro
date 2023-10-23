@@ -1,0 +1,51 @@
+@media (min-width: 100px) and (max-width: 900px) {
+    body, html {
+        margin: 0;
+        padding: 0;
+        background-color: #e1d9d9;
+    }
+
+    header {
+        background-color: #e1d9d9;
+        padding: 20px;
+    }
+
+    .top-bar {
+        height: 26px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        background-color: #e5e0e0;
+        padding: 10px 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+    .top-bar .back a {
+        color: black;
+        font-size: large;
+        font-weight: bold;
+        text-decoration: none;
+        font-family:cursive;
+    }
+
+
+    .container {
+        padding: 20px;
+    }
+
+    .container h3 {
+        text-align: center;
+        text-decoration: underline;
+    }
+
+    .container .title {
+        text-align: center;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+}

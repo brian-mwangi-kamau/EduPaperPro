@@ -1,40 +1,36 @@
-$(document).ready(function() {
-    updateCircleChart();
+    document.addEventListener("DOMContentLoaded", function () {
+        var ctx = document.getElementById("educationChart").getContext("2d");
 
-    function updateCircleChart() {
-        $.get('/metrics/', function(data) {
-            var currentUsers = data.total_users;
-            var totalUsers = 10;
+        $.get("/metrics/", function (data) {
+            var educationData = data.education_data;
 
-            var chartData = {
-                labels: ['Users', 'Target'],
-                datasets: [{
-                    data: [currentUsers, totalUsers],
-                    backgroundColor: ['#36A2EB', '#E7E7E7'],
-                    borderWidth: 0,
-                }],
+            var labels = Object.keys(educationData);
+            var counts = Object.values(educationData);
+
+            var data = {
+                labels: labels,
+                datasets: [
+                    {
+                        data: counts,
+                        backgroundColor: ["#FF5733", "#33FFB2", "#3360FF"],
+                    },
+                ],
             };
 
-            var chartOptions = {
-                cutoutPercentage: 0,
-                responsive: false,
-                rotation: -Math.PI,
-                circumference: 2 * Math.PI,
+            var options = {
+                responsive: true,
             };
 
-            var chartCenterText = currentUsers + ' / ' + totalUsers;
-
-            var chart = new Chart(document.getElementById('userCircleChart'), {
-                type: 'doughnut',
-                data: chartData,
-                options: chartOptions,
-            });
-
-
-            var userCountText = document.getElementById('userCountText');
-            userCountText.innerText = chartCenterText;
+            if (window.educationChart) {
+                window.educationChart.data = data;
+                window.educationChart.update();
+            } else {
+                window.educationChart = new Chart(ctx, {
+                    type: "pie",
+                    data: data,
+                    options: options,
+                });
+            }
         });
-    }
+    });
 
-    setInterval(updateCircleChart, 60000);
-});

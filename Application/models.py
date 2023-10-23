@@ -7,6 +7,7 @@ class Resource(models.Model):
     description = models.TextField(max_length=500)
     file = models.FileField(upload_to='files/')
     LEVEL_CHOICES = [
+        ('primary-school', 'Primary School'),
         ('high-school', 'High School'),
         ('tertiary', 'Tertiary Institutions'),
     ]
@@ -49,3 +50,5 @@ class Resource(models.Model):
 class DownloadRecord(models.Model):
     resource = models.ForeignKey(Resource, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
+
+    

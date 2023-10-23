@@ -11,6 +11,7 @@ from django.db.models import Count
 from django.db.models.functions import TruncDate, TruncMonth
 from django.utils import timezone
 from datetime import timedelta
+from django.db.models import Count
 
 
 
@@ -24,11 +25,18 @@ def dashboard(request):
     user = request.user
     if user.is_staff:
         users = CustomUser.objects.count()
+        active_users = CustomUser.objects.filter(is_active=True).count()
+        subscribed_users = CustomUser.objects.filter(is_subscribed=True).count()
+        education_counts = CustomUser.objects.values('level_of_education').annotate(count=Count('level_of_education'))
+        education_data = list(education_counts)
         user_downloads = DownloadRecord.objects.count()
 
         context = {
             'users': users,
-            'downloads': user_downloads,
+            'active_users': active_users,
+            'subscribed_users': subscribed_users,
+            'education_data': education_data,
+            'user_downloads': user_downloads,
         }
         return render(request, 'admin_dashboard.html', context)
     else:
@@ -44,6 +52,15 @@ def dashboard(request):
         }
 
         return render(request, 'dashboard.html', context)
+
+@login_required
+def edit_resources(request):
+    user = request.user
+    if user.is_staff:
+        return render(request, 'edit_resources.html')
+    else:
+        return HttpResponse("You cannot perform this action!")
+    
 
 
 
@@ -63,49 +80,15 @@ def upload_form(request):
 
 
 
-def record_download(request):
-    if request.method == 'POST':
-        form_id = request.POST.get('form_id')
-        form_file = get_object_or_404(Resource, id=form_id)
-        DownloadRecord.objects.create(resource=form_file)
-        return JsonResponse({'status': 'success'})
-    else:
-        return JsonResponse({'status': 'error'})
-
-
 def download_forms(request, form_id):
     form_file = get_object_or_404(Resource, id=form_id)
     file_path = form_file.file.path
-    DownloadRecord.objects.create(resource=form_file)
     with open(file_path, 'rb') as f:
         response = HttpResponse(f, content_type='application/octet-stream')
         response['Content-Disposition'] = f'attachment; filename="{form_file.file.name}"'
         return response
     
 
-
-def platform_metrics(request):
-    total_users = CustomUser.objects.count()
-
-    return JsonResponse({'total_users': total_users},)
-
-
-def download_data(request):
-    download_data = DownloadRecord.objects.annotate(
-        download_day=TruncDate('timestamp')
-    ).values('download_day').annotate(
-        download_count=Count('id')
-    )
-
-    data = {
-        'downloads': [
-            {
-                'date': record['download_day'].strftime('%Y-%m-%d'),
-                'count': record['download_count']
-            }
-            for record in download_data
-        ]
-    }
-
-    return JsonResponse(data)
-   
+def preview_description(request, form_id):
+    form_file = get_object_or_404(Resource, id=form_id)
+    return render(request, 'preview_description.html', {'form_file': form_file})

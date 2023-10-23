@@ -1,0 +1,148 @@
+@media (min-width: 100px) and (max-width: 900px) {
+    body, html {
+        margin: 0;
+        padding: 0;
+        background-color: #e1d9d9;
+    }
+
+    header {
+        background-color: #e1d9d9;
+        padding: 20px;
+    }
+
+
+    .container {
+        padding: 10px;
+    }
+
+    /* Style for the top bar with menu and notifications icons */
+    .top-bar {
+        height: 26px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #e5e0e0;
+        padding: 10px 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+    .top-bar .site-icon a {
+        color: black;
+        font-size: large;
+        font-weight: bold;
+        text-decoration: none;
+        font-family:cursive;
+    }
+
+    .top-bar .profile-icon i {
+        color: black;
+        font-size: x-large;
+    }
+
+    .container .search-bar {
+        margin-top: 5px;
+        text-align: center;
+        align-items: center;
+        margin-bottom: 40px;
+    }
+
+    .container .search-bar input {
+        border: 1px solid grey;
+        border-radius: 5px;
+        padding: 3px;
+        margin-top: 10px;
+        text-align: center;
+        align-items: center;
+    }
+
+    .container.search-bar button {
+        border: 1px solid;
+        border-radius: 5px;
+        background-color: rgb(6, 57, 68);
+        padding: 4px;
+    }
+
+    .resources .resource-item {
+        margin-bottom: 4px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1px 10px;
+        background-color: #e5e0e0;
+        border: 1px solid grey;
+        border-radius: 10px;
+    }
+
+    .resource-item .icons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .resource-item .download-icon {
+        color: black;
+        font-size: x-large;
+        padding-right: 10px;
+    }
+
+    .resource-item .title {
+        font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 190px;
+        font-family:cursive;
+    }
+
+    .resource-item .label p {
+        color: aliceblue;
+    }
+
+    .resource-item .label .primary-school {
+        background-color: rgb(184, 199, 161);
+        border-radius: 5px;
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+
+    .resource-item .label .high-school {
+        background-color: rgb(30, 136, 155);
+        border-radius: 5px;
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+
+    .resource-item .label .tertiary-inst {
+        background-color: rgb(72, 12, 70);
+        border-radius: 5px;
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+
+    .resource-item a {
+        color: black;
+        text-decoration: none;
+    }
+
+    .resource-item .preview{
+        color: aliceblue;
+        font-size: 12px;
+        font-weight: 10;
+        background-color: black;
+        padding: 6px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-family :Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+
+    .end-note p {
+        text-align: center;
+        font-weight: bold;
+        font-size: 15px;
+    }
+}

@@ -1,5 +1,4 @@
 
-
 function createBarChart(ctx, data) {
     return new Chart(ctx, {
       type: "bar",
@@ -9,7 +8,8 @@ function createBarChart(ctx, data) {
           {
             label: "Downloads",
             data: data.downloads,
-            backgroundColor: "rgba(75, 192, 192, 0.2)",
+            backgroundColor:"rgba(75, 192, 192, 0.2)",
+            borderColor: "rgba(75, 192, 192, 1)",
             borderWidth: 1,
           },
         ],
@@ -24,35 +24,20 @@ function createBarChart(ctx, data) {
     });
   }
   
-  
+
   function fetchDataAndCreateCharts() {
     fetch('/downloads/')
       .then((response) => response.json())
       .then((data) => {
-        const dates = data.downloads.map((record) => record.date);
+        const months = data.downloads.map((record) => record.month);
         const downloadCounts = data.downloads.map((record) => record.count);
-  
-        const weeklyData = {
-          labels: dates,
+
+        const monthlyData = {
+          labels: months,
           downloads: downloadCounts,
         };
   
-  
-        const monthlyData = {
-  
-        };
-  
-        const weeklyCtx = document.getElementById("weeklyChart").getContext("2d");
         const monthlyCtx = document.getElementById("monthlyChart").getContext("2d");
-  
-  
-        if (weeklyChart) {
-          weeklyChart.data.labels = weeklyData.labels;
-          weeklyChart.data.datasets[0].data = weeklyData.downloads;
-          weeklyChart.update();
-        } else {
-          weeklyChart = createBarChart(weeklyCtx, weeklyData);
-        }
   
         if (monthlyChart) {
           monthlyChart.data.labels = monthlyData.labels;
@@ -65,8 +50,7 @@ function createBarChart(ctx, data) {
       .catch((error) => console.error('Error fetching data:', error));
   }
   
-  
-  let weeklyChart;
+
   let monthlyChart;
   
   fetchDataAndCreateCharts();

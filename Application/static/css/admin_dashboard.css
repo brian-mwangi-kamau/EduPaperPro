@@ -40,6 +40,8 @@
         border: none;
         border-radius: 20px;
         padding: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
         text-decoration: none;
     }
 
@@ -57,63 +59,62 @@
         margin-bottom: 15px;
     }
 
-    /* .view-link button {
-        background-color: rgb(12, 12, 12);
-        text-decoration: none;
-        color: azure;
-        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        font-weight: bold;
-        font-size: medium;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        margin-top: 20px;
-        padding: 13px 100px;
-        border: none;
-        border-radius: 25px;
-    }
 
-    .view-link a {
-        text-decoration: none;
-    }
-
-    .view-link button button:hover {
-        background-color: rgb(85, 83, 84);
-    }
-
-    .view-link button button i {
-        padding-top: 4px;
-        padding-bottom: 4px;
-    } */
-
-    .user-chart {
+    .users .user-no {
         border: 1px solid #c1bcbc;
         background-color: aliceblue;
-        border-top-right-radius: 20px;
-        border-top-left-radius: 20px;
+        border-radius: 20px;
         padding: 20px;
         position: relative;
-        /* width: 200px; */
-        height: 200px; 
-
-        display: flex;
+        height: 170px; 
+        display: block;
         justify-content: space-around;
     }
 
-    .user-chart canvas {
-        position: absolute;
+    .users .user-no p {
+        text-align: center;
+        text-decoration: underline;
+        font-weight: bold;
     }
 
-    .number_of_users p {
-        margin-top: 0px;
+
+    .user-graph {
+        margin-top: 10px;
         border: 1px solid #c1bcbc;
         background-color: aliceblue;
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
-        padding: 10px;
-        display: flex;
+        border-radius: 20px;
+        padding: 20px;
+        position: relative;
+        height: 180px; 
+        display: block;
         justify-content: space-around;
+        margin-bottom: 10px;
     }
+
+    .user-graph p {
+        text-align: center;
+        text-decoration: underline;
+        font-weight: bold;
+    }
+
+
+    .edit-resources {
+        background-color: black;
+        padding: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-radius: 20px;
+        align-items: center;
+        text-align: center;
+        margin: auto;
+        width: fit-content;
+    }
+
+    .edit-resources a {
+        color: aliceblue;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
 
 }
