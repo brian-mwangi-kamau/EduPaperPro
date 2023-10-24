@@ -4,10 +4,6 @@
     <head>
         <title>Admin console</title>
         <link rel="stylesheet" type="text/css" href="{% static 'css/admin_dashboard.css' %}">
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="/static/js/circle-chart.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!-- <script src="/static/js/graph.js"></script> -->
     </head>
@@ -71,7 +67,7 @@
                 </div>
 
                 <div class="edit-resources">
-                    <a href="{% url 'edit_resources' %}">Edit Resources <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a href="{% url 'admin_resources' %}">Edit Resources <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 </div>
             </div>
         </div>

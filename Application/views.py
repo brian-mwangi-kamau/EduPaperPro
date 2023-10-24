@@ -12,6 +12,9 @@ from django.db.models.functions import TruncDate, TruncMonth
 from django.utils import timezone
 from datetime import timedelta
 from django.db.models import Count
+from django.urls import reverse_lazy
+from django.views.generic import DeleteView
+from django.db.models import Q
 
 
 
@@ -53,11 +56,18 @@ def dashboard(request):
 
         return render(request, 'dashboard.html', context)
 
+
+
 @login_required
-def edit_resources(request):
+def admin_resources(request):
     user = request.user
     if user.is_staff:
-        return render(request, 'edit_resources.html')
+        resources = Resource.objects.all()
+
+        context = {
+            'resources': resources,
+        }
+        return render(request, 'admin_resources.html', context)
     else:
         return HttpResponse("You cannot perform this action!")
     
@@ -92,3 +102,35 @@ def download_forms(request, form_id):
 def preview_description(request, form_id):
     form_file = get_object_or_404(Resource, id=form_id)
     return render(request, 'preview_description.html', {'form_file': form_file})
+
+
+
+@login_required
+def delete_resource(request, form_id):
+    user = request.user
+    if user.is_staff:
+        resource = Resource.objects.get(pk=form_id)
+        resource.delete()
+        return redirect('admin_resources')
+    else:
+        return HttpResponse("You cannot perform this action!")
+
+
+
+@login_required
+def update_resource(request, form_id):
+    resource = Resource.objects.get(pk=form_id)
+    form = ResourceForm(request.POST or request.FILES or None, instance=resource)
+    user = request.user
+    if user.is_staff:
+        if form.is_valid():
+            form.save()
+            return redirect('admin_resources')
+        
+        return render(request, 'update_resource.html', {
+            'resource': resource,
+            'form': form,
+        })
+    else:
+        return HttpResponse("You cannot perform this action!")
+

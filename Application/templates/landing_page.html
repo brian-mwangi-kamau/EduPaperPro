@@ -14,14 +14,18 @@
 <body>
     {% block content %}
     <div class="container">
+        <div class="image">
+            <img src="/static/img/books1.avif">
+        </div>
         <div class="text">
-            <h1>Download Your Knowledge</h1>
-            <p>Empower your academic journey with a diverse array of learning resources and course materials.</p>
+            <h2>A Classical Education For The Future</h2>
         </div>
         
-        <a href="{% url 'dashboard' %}">
-            <button type="submit">Proceed <i class="fa-solid fa-arrow-right-long" style="margin-left: 22px; ";></i></button>
-        </a>
+        <div class="proceed-button">
+            <a href="{% url 'dashboard' %}" class="round-button">
+                <button type="submit">Read</button>
+            </a>
+        </div>
     </div>
 {% endblock %}
 </body>

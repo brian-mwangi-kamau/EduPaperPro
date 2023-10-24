@@ -41,6 +41,7 @@ class Resource(models.Model):
     form = models.CharField(max_length=100, choices=FORM_CHOICES, blank=True)
     year = models.CharField(max_length=100, choices=YEAR_CHOICES, blank=True)
     is_free = models.BooleanField(default=False)
+    # timestamp = models.DateTimeField(auto_now_add=True)
 
 
     def __str__(self):

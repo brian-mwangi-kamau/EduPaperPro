@@ -2,12 +2,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Dashboard</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}">
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="/static/js/circle-chart.js"></script>
+        <title>Editing console</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/admin_resources.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
@@ -16,14 +12,15 @@
             <!-- The navbar -->
             <div class="top-bar">
                 <div class="site-icon">
-                    <a href="{% url 'dashboard' %}">EduPaperPro</a>
+                    <a href="{% url 'admin_resources' %}">EduPaperPro</a>
                 </div>
 
                 <div class="profile-icon">
-                    <a href=""><i class="fa-regular fa-user"></i></a>
+                    <a href="{% url 'dashboard' %}">admin</a>
                 </div>
             </div>
         </header>
+
         <div class="container">
             <div class="preferences">
                 <div class="search-bar">
@@ -41,7 +38,6 @@
 
             <div class="resources">
                 {% if resources %}
-                <p class="welcome">Explore our library 📚</p>
                     {% for resource in resources %}
                     <div class="resource-item">
                         <div class="label">
@@ -56,9 +52,12 @@
                         <p class="title">{{resource.title }}</p>
                         <div class="icons">
                             <div class="download-icon">
-                                <a href="{% url 'download_forms' resource.id %}"><i class="fa-solid fa-file-arrow-down"></i></a>
+                                <a href="{% url 'update-resource' resource.id %}"><i class="fa-solid fa-pencil"></i></a>
                             </div>
-                            <a href="{% url 'preview_description' resource.id %}" class="preview">Preview</a>
+                            <form method="post">
+                                {% csrf_token %}
+                                <a href="{% url 'delete-resource' resource.id %}"><i class="fa-solid fa-trash-can"></i></a>
+                            </form>
                         </div>
                     </div>
                     {% endfor %}

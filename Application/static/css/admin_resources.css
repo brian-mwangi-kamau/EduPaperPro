@@ -34,9 +34,14 @@
         font-family:cursive;
     }
 
-    .top-bar .profile-icon i {
-        color: black;
-        font-size: x-large;
+    .top-bar .profile-icon a {
+        font-weight: bold;
+        color: aliceblue;
+        font-size: large;
+        text-decoration: none;
+        background-color: black;
+        padding: 7px;
+        border-radius: 20px;
     }
 
     .container {
@@ -50,21 +55,6 @@
         align-items: center;
         margin-bottom: 40px;
         width: 100%;
-    }
-
-    .container .search-bar input {
-        border: 1px solid grey;
-        border-radius: 5px;
-        padding: 3px;
-        text-align: center;
-        align-items: center;
-    }
-
-    .container.search-bar button {
-        border: 1px solid;
-        border-radius: 5px;
-        background-color: rgb(6, 57, 68);
-        padding: 4px;
     }
 
     .container .resources .welcome {
@@ -92,7 +82,7 @@
 
     .resource-item .download-icon {
         color: black;
-        font-size: x-large;
+        font-size: medium;
         padding-right: 10px;
     }
 
