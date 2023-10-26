@@ -1,32 +1,94 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html>
-<head>
-    <title>EduPaperPro</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/landing_page.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" integrity="sha512-W/zrbCncQnky/EzL+/AYwTtosvrM+YG/V6piQLSe2HuKS6cmbw89kjYkp3tWFn1dkWV7L1ruvJyKbLz73Vlgfg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Croissant+One&display=swap" rel="stylesheet">
-</head>
-<body>
-    {% block content %}
-    <div class="container">
-        <div class="image">
-            <img src="/static/img/books1.avif">
+    <head>
+        <title>Dashboard</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/landing_page.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body>
+        {% block content %}
+        <header>
+            <!-- The navbar -->
+            <div class="top-bar">
+                <div class="site-icon">
+                    <a href="{% url 'landing_page' %}">EduPaperPro</a>
+                </div>
+
+                <div class="profile-icon">
+                    <a href="{% url 'profile' %}">Log In</a>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <div class="preferences">
+                <div class="search-bar">
+                    <form class="d-flex" method="post">
+                        {% csrf_token %}
+                        <input type="text" id="searchInput" placeholder="Search resources" name="searched">
+                        <button id="searchButton">Search</button>
+                    </form>
+                </div>
+                   
+                <div class="filter-icon">
+                    <i class="fa-solid fa-filter"></i>
+                </div>
+            </div>
+
+            <div class="resources">
+                {% if resources %}
+                <p class="welcome">Explore our library 📚</p>
+                    {% for resource in resources %}
+                    <div class="resource-item" id="item-list">
+                        <div class="label">
+                            {% if resource.level_of_education == 'primary-school' %}
+                                <p class="primary-school">P</p>
+                            {% elif resource.level_of_education == 'high-school' %}
+                                <p class="high-school">H</p>
+                            {% elif resource.level_of_education == 'tertiary' %}
+                                <p class="tertiary-inst">T</p>
+                            {% endif %}
+                        </div>                       
+                        <p class="title">{{resource.title }}</p>
+                        <div class="icons">
+                            <div class="download-icon">
+                                <a href="{% url 'download_forms' resource.id %}"><i class="fa-solid fa-file-arrow-down"></i></a>
+                            </div>
+                            <a href="{% url 'preview_description' resource.id %}" class="preview">Preview</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <div class="end-note">
+                        <p>You've reached the end 👋!</p>
+                    </div>
+                {% else %}
+                    <p class="no-resources">Oops! There are no resources to show.</p>
+                {% endif %}
+            </div>
         </div>
-        <div class="text">
-            <h2>A Classical Education For The Future</h2>
-        </div>
-        
-        <div class="proceed-button">
-            <a href="{% url 'dashboard' %}" class="round-button">
-                <button type="submit">Read</button>
-            </a>
-        </div>
-    </div>
-{% endblock %}
-</body>
+        {% endblock %}
+        <style>
+            .container .preferences .search-bar {
+                display: flex;
+                overflow: hidden;
+            }
+
+            .container .preferences .search-bar input {
+                border: none;
+                padding: 10px;
+                border-radius: 15px;
+                width: 60%;
+                margin-right: 10px;
+            }
+
+            .container .preferences .search-bar button {
+                border-radius: 15px;
+                background: #0077b5;
+                color: #fff;
+                border: none;
+                padding: 10px 15px;
+                cursor: pointer;
+            }
+        </style>
+    </body>
 </html>

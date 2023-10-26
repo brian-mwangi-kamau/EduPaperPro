@@ -71,32 +71,6 @@
         justify-content: space-around;
     }
 
-    .users .user-no p {
-        text-align: center;
-        text-decoration: underline;
-        font-weight: bold;
-    }
-
-
-    .user-graph {
-        margin-top: 10px;
-        border: 1px solid #c1bcbc;
-        background-color: aliceblue;
-        border-radius: 20px;
-        padding: 20px;
-        position: relative;
-        height: 180px; 
-        display: block;
-        justify-content: space-around;
-        margin-bottom: 10px;
-    }
-
-    .user-graph p {
-        text-align: center;
-        text-decoration: underline;
-        font-weight: bold;
-    }
-
 
     .edit-resources {
         background-color: black;

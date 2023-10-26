@@ -73,3 +73,10 @@ def logout_view(request):
     logout(request)
     messages.success(request, "You have been logged out")
     return redirect('login')
+
+
+@login_required
+def delete_account(request):
+    user = request.user
+    user.delete()
+    return redirect('signup')

@@ -4,10 +4,6 @@
     <head>
         <title>Dashboard</title>
         <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}">
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="/static/js/circle-chart.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
@@ -20,7 +16,7 @@
                 </div>
 
                 <div class="profile-icon">
-                    <a href=""><i class="fa-regular fa-user"></i></a>
+                    <a href="{% url 'profile' %}"><i class="fa-regular fa-user"></i></a>
                 </div>
             </div>
         </header>
@@ -43,7 +39,7 @@
                 {% if resources %}
                 <p class="welcome">Explore our library 📚</p>
                     {% for resource in resources %}
-                    <div class="resource-item">
+                    <div class="resource-item" id="item-list">
                         <div class="label">
                             {% if resource.level_of_education == 'primary-school' %}
                                 <p class="primary-school">P</p>
@@ -94,5 +90,25 @@
                 cursor: pointer;
             }
         </style>
+        <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#category').change(function () {
+                    var category = $(this).val();
+                    $.get('/filter_items/', { 'level_of_education': category }, function (data) {
+                        var resources = data.resources;
+                        $('.resources').empty(); // Clear the existing items
+                        for (var i = 0; i < resources.length; i++) {
+                            // You should add HTML elements similar to how they are originally displayed
+                            var itemHTML = `
+                                <div class="resource-item">
+                                    Add the item content here -->
+                                <!-- </div>`;
+                            $('.resources').append(itemHTML);
+                        }
+                    });
+                });
+            });
+        </script>         -->
     </body>
 </html>

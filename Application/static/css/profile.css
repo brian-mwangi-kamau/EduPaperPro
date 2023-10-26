@@ -1,0 +1,169 @@
+@media (min-width: 100px) and (max-width: 900px) {
+    body, html {
+        margin: 0;
+        padding: 0;
+        background-color: #e1d9d9;
+    }
+
+    header {
+        background-color: #e1d9d9;
+        padding: 20px;
+    }
+
+    /* Style for the top bar with menu and notifications icons */
+    .top-bar {
+        height: 26px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #e5e0e0;
+        padding: 10px 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+    .top-bar .site-icon a {
+        color: black;
+        font-size: large;
+        font-weight: bold;
+        text-decoration: none;
+        font-family:cursive;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .container .greetings {
+        position: relative;
+        align-items: center;
+        margin-top: 5px;
+    }
+
+    .container .heading {
+        text-align: center;
+        align-items: center;
+        font-size: medium;
+        margin-top: 25px;
+        margin-bottom: 1px;
+    }
+
+    .container .my-form {
+        background-color: aliceblue;
+        border: none;
+        padding: 7px 20px;
+        border-radius: 20px;
+    }
+
+    .container .form-group {
+        display: flex;
+        justify-content: flex;
+    }
+
+    .container .form-group .label {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        margin-right: 15px;
+    }
+
+    .container .form-group .no-field {
+        border: 1px solid grey ;
+        border-radius: 3px;
+        padding: 1px 3px;
+        width: 55%;
+    }
+
+    .container .my-form button {
+        border: none;
+        padding: 5px;
+        border-radius: 10px;
+        background-color: rgb(29, 100, 100);
+        color: antiquewhite;
+    }
+
+
+
+    .container .plan-container {
+        background-color: aliceblue;
+        padding: 1px 30px;
+        border: none;
+        border-radius: 20px;
+        margin-top: 20px;
+        margin-bottom: 50px;
+    }
+
+    .container .upgrade {
+        background-color: rgb(29, 100, 100);
+        padding: 5px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-radius: 20px;
+        align-items: center;
+        text-align: center;
+        margin: auto;
+        margin-bottom: 10px;
+        width: fit-content;
+    }
+
+    .container .plan-container a {
+        color: aliceblue;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .not-subscribed form {
+        display: none;
+    }
+
+    .container .button-links {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+
+
+    .container .logout-link {
+        background-color: rgb(196, 39, 39);
+        padding: 7px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-radius: 20px;
+        align-items: center;
+        text-align: center;
+        margin: auto;
+        margin-bottom: 5px;
+        width: fit-content;
+    }
+
+    .container .logout-link a {
+        color: aliceblue;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .container .delete-acc-link {
+        background-color:rgb(196, 39, 39);
+        padding: 7px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-radius: 20px;
+        align-items: center;
+        text-align: center;
+        margin: auto;
+        margin-bottom: 5px;
+        width: fit-content;
+    }
+
+
+    .container .delete-acc-link a {
+        color: aliceblue;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+
+}

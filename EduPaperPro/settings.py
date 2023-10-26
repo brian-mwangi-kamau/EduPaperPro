@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'Transactions',
     'Application',
     #'rest_framework',
+    'django_daraja',
 ]
 
 MIDDLEWARE = [
@@ -156,3 +157,20 @@ EMAIL_PORT = os.environ['EMAIL_PORT']
 EMAIL_USE_TLS = os.environ['EMAIL_USE_TLS'] 
 EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
 EMAIL_HOST_PASSWORD = os.environ["EMAIL_HOST_PASSWORD"]
+
+
+MPESA_ENVIRONMENT = 'sandbox'
+
+MPESA_CONSUMER_KEY = os.environ['mpesa_consumer_key']
+MPESA_CONSUMER_SECRET = os.environ['mpesa_consumer_secret']
+
+MPESA_SHORTCODE_TYPE = 'paybill'
+
+MPESA_EXPRESS_SHORTCODE = '174379'
+
+MPESA_PASSKEY = os.environ['MPESA_PASSKEY']
+MPESA_SHORTCODE = os.environ['mpesa_shortcode']
+
+MPESA_INITIATOR_USERNAME = os.environ['MPESA_INITIATOR_USERNAME']
+MPESA_INITIATOR_SECURITY_CREDENTIAL = os.environ['MPESA_INITIATOR_SECURITY_CREDENTIAL']
+

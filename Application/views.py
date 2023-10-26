@@ -1,25 +1,47 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from Application.forms import ResourceForm
-from django.http import FileResponse
 from django.shortcuts import get_object_or_404
-from .models import DownloadRecord, Resource
+from .models import Resource
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from Users.models import CustomUser
 from django.db.models import Count
-from django.db.models.functions import TruncDate, TruncMonth
-from django.utils import timezone
-from datetime import timedelta
 from django.db.models import Count
 from django.urls import reverse_lazy
-from django.views.generic import DeleteView
 from django.db.models import Q
-
+from Users.models import CustomUser
+from .forms import UpdateForm
 
 
 def landing_page(request):
-    return render(request, 'landing_page.html')
+    resources = Resource.objects.filter(is_free=True)
+
+    context = {
+        'resources': resources,
+    }
+
+    return render(request, 'landing_page.html', context)
+
+
+@login_required
+def profile(request):
+    user = request.user
+
+    if request.method == 'POST':
+        form = UpdateForm(request.POST)
+        if form.is_valid():
+            user.first_name = form.cleaned_data['first_name']
+            user.last_name = form.cleaned_data['last_name']
+            user.save()
+            return redirect('profile')
+    else:
+        form = UpdateForm(initial={'first_name': user.first_name, 'last_name': user.last_name})
+
+    return render(request, 'profile.html', {
+        'user': user,
+        'form': form,
+    })
 
 
 
@@ -32,14 +54,12 @@ def dashboard(request):
         subscribed_users = CustomUser.objects.filter(is_subscribed=True).count()
         education_counts = CustomUser.objects.values('level_of_education').annotate(count=Count('level_of_education'))
         education_data = list(education_counts)
-        user_downloads = DownloadRecord.objects.count()
 
         context = {
             'users': users,
             'active_users': active_users,
             'subscribed_users': subscribed_users,
             'education_data': education_data,
-            'user_downloads': user_downloads,
         }
         return render(request, 'admin_dashboard.html', context)
     else:
@@ -55,6 +75,19 @@ def dashboard(request):
         }
 
         return render(request, 'dashboard.html', context)
+
+
+def filter_items(request):
+    category = request.GET.get('level_of_education', 'All')
+
+    if category == 'All':
+        resources = Resource.objects.all()
+    else:
+        resources = Resource.objects.filter(category=category)
+
+    resource_list = [resource.title for resource in resources]
+    return JsonResponse({'resources': resource_list})
+
 
 
 
@@ -133,4 +166,5 @@ def update_resource(request, form_id):
         })
     else:
         return HttpResponse("You cannot perform this action!")
+
 

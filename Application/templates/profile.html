@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Profile</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body>
+        {% block content %}
+        <header>
+            <!-- The navbar -->
+            <div class="top-bar">
+                <div class="site-icon">
+                    <a href="{% url 'dashboard' %}">EduPaperPro</a>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <div class="greetings" id="greeting"></div>
+
+            <p class="heading">User Credentials</p>
+            <form method="post" enctype="multipart/form-data" class="my-form">
+                <form>
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <p class="label">First name</p>
+                        <p class="field">{{ form.first_name }}</p>
+                    </div>
+                    <div class="form-group">
+                        <p class="label">Last name</p>
+                        <p class="field">{{ form.last_name }}</p>
+                    </div>
+                    <div class="form-group">
+                        <p class="label">Acc. number</p>
+                        <p class="no-field">{{ user.account_number }}</p>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            
+
+            {% if user.is_subscribed %}
+            <div class="subscribed">
+                <div class="plan-container">
+                    <h3 style="text-align: center;">You are on a premium plan.</h3>
+                    <h3 style="text-align: center;">{{ days_remaining }} days remaining</h3>
+                </div>
+            </div>
+            {% else %}
+            <div class="not-subscribed">
+                <div class="plan-container">
+                    <h3 style="text-align: center;">You are on a free plan.</h3>
+                    <p style="text-align: center;">Premium plans start from Ksh.200/mo.</p>
+                    <div class="upgrade">
+                        <a href="" id="upgrade-link">Upgrade</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <div class="button-links">
+                <div class="logout-link">
+                    <a href="{% url 'logout' %}" id="upgrade-link">Log out</a>
+                </div>
+    
+                <div class="delete-acc-link">
+                    <a href="{% url 'delete_account' %}" id="upgrade-link">Delete account</a>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+
+        <script>
+            var currentTime = new Date().getHours();
+            var greeting = document.getElementById('greeting');
+    
+            if (currentTime >= 5 && currentTime < 12) {
+                greeting.textContent = "Good morning, {{ user.first_name }} 🌞";
+            } else if (currentTime >= 12 && currentTime < 18) {
+                greeting.textContent = "Good afternoon, {{ user.first_name }} ⛅";
+            } else {
+                greeting.textContent = "Good evening, {{ user.first_name }} 🌓";
+            }
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var upgradeLink = document.getElementById('upgrade-link');
+                var form = document.querySelector('.not-subscribed .plan-container form');
+
+                upgradeLink.addEventListener('click', function (e) {
+                    e.preventDefault(); // Prevent the default link behavior
+                    form.style.display = 'block'; // Display the form
+                });
+            });
+        </script>
+    </body>
+</html>
