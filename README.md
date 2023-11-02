@@ -29,4 +29,5 @@ __(d):__ This is the admin's dashboard, where they can update resource details, 
 ![Admin dashboard](files/admin_edit.jpeg)<br></br>
 
 _This app is still in the development stage._<br>
-It can be found [here](https://edupaperpro.pythonanywhere.com)
+It can be found [here](https://edupaperpro.pythonanywhere.com)<br>
+_The interface is currently compatible with devices within (min-width: 330px) and (max-width: 430px)_
