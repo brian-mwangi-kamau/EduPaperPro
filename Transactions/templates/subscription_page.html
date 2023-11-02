@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Subscription Form</title>
+    </head>
+    <body>
+        <h1>Subscription Form</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="submit" action="{% url 'subscription_monthly' %}">Initiate</button>
+        </form>
+
+        <h1>Subscription Form</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="submit" action="{% url 'subscription_yearly' %}">Initiate</button>
+        </form>
+    </body>
+</html>

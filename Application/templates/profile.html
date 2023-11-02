@@ -52,7 +52,7 @@
                     <h3 style="text-align: center;">You are on a free plan.</h3>
                     <p style="text-align: center;">Premium plans start from Ksh.200/mo.</p>
                     <div class="upgrade">
-                        <a href="" id="upgrade-link">Upgrade</a>
+                        <a href="{% url 'subscription_page' %}">Upgrade</a>
                     </div>
                 </div>
             </div>
@@ -80,18 +80,6 @@
             } else {
                 greeting.textContent = "Good evening, {{ user.first_name }} 🌓";
             }
-        </script>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                var upgradeLink = document.getElementById('upgrade-link');
-                var form = document.querySelector('.not-subscribed .plan-container form');
-
-                upgradeLink.addEventListener('click', function (e) {
-                    e.preventDefault(); // Prevent the default link behavior
-                    form.style.display = 'block'; // Display the form
-                });
-            });
         </script>
     </body>
 </html>

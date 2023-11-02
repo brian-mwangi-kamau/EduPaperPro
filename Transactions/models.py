@@ -2,6 +2,15 @@ from django.db import models
 from Users.models import CustomUser
 
 
+class AccessToken(models.Model):
+    token = models.CharField(max_length=30)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.token
+
+
+
 class Subscription(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     start_date = models.DateField()

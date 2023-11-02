@@ -14,6 +14,8 @@ from Users.models import CustomUser
 from .forms import UpdateForm
 
 
+
+
 def landing_page(request):
     resources = Resource.objects.filter(is_free=True)
 
