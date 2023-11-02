@@ -17,15 +17,16 @@ __EduPaperPro__ is committed to bridging the gap between students and digital le
 _Below are screenshots of the app interface:_
 
 __(a):__ This is the landing page. Here, only free resources are shown.
-![Landing Page](files/landing_page.jpeg)
+![Landing Page](files/landing_page.jpeg)<br></br>
 
-__(b):__ This is the dashboard. The user logged in currently is a premium user, which is why they can see more/all resources.
-![Dashboard](files/dashboard.jpeg)
+__(b):__ This is the dashboard. The user logged in currently is a premium user, which is why they can see more/all resources.<br>
+![Dashboard](files/dashboard.jpeg)<br></br>
 
 __(c):__ This is the profile page where the user can change their personal details,as well as view their plan.
-![Profile Settings](files/profile_settings.jpeg)
+![Profile Settings](files/profile_settings.jpeg)<br></br>
 
 __(d):__ This is the admin's dashboard, where they can update resource details, or delete them.
-![Admin dashboard](files/admin_edit.jpeg)<br>
+![Admin dashboard](files/admin_edit.jpeg)<br></br>
+
 _This app is still in the development stage._<br>
-It can be found [here](edupaperpro.pythonanywhere.com)
+It can be found [here](https://edupaperpro.pythonanywhere.com)
