@@ -1,3 +1,5 @@
+## Application Overview 
+
 __EduPaperPro__ is an online platform designed to facilitate file sharing for students across different educational levels, ranging from lower primary school to high school and tertiary education.
 
 At __EduPaperPro__, users gain access to a wide array of valuable resources, including past examination papers and revision materials provided in various formats such as PDF, DOCX, and more.
@@ -12,5 +14,22 @@ To upgrade to a __premium plan__, users can choose from two convenient pricing o
 
 __EduPaperPro__ is committed to bridging the gap between students and digital learning, making educational resources more accessible and convenient for all.
 
+_Below are screenshots of the app interface:_
+
+__(a):__ This is the landing page.<br>
+Here, only free resources are shown.
+![Alt text](files/landing_page.jpeg)
+
+__(b):__ This is the dashboard. The user logged in currently is a premium user, which is why they can see more/all resources.
+![Alt text](files/dashboard.jpeg)
+
+__(c):__ This is the profile page where the user can change their personal details,as well as view their plan.
+![Alt text](files/profile_settings.jpeg)
+
+
+
+
+__(d):__ This is the admin's dashboard, where they can update resource details, or delete them.
+![Alt text](files/admin_edit.jpeg)
 _This app is still in the development stage._<br>
 It can be found [here](edupaperpro.pythonanywhere.com)
